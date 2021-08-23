@@ -12,7 +12,7 @@ class BaseChainSetting(NamedTuple):
 MAINNET = 'mainnet'
 PYRMONT = 'pyrmont'
 PRATER = 'prater'
-LUKSO = 'lukso-private-testnet'
+LUKSO = 'l15'
 
 
 # Eth2 Mainnet setting
