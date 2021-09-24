@@ -12,7 +12,7 @@ class BaseChainSetting(NamedTuple):
 MAINNET = 'mainnet'
 PYRMONT = 'pyrmont'
 PRATER = 'prater'
-LUKSO = 'l15'
+LUKSO = 'lukso-private-testnet'
 
 
 # Eth2 Mainnet setting
@@ -21,7 +21,7 @@ MainnetSetting = BaseChainSetting(ETH2_NETWORK_NAME=MAINNET, GENESIS_FORK_VERSIO
 PyrmontSetting = BaseChainSetting(ETH2_NETWORK_NAME=PYRMONT, GENESIS_FORK_VERSION=bytes.fromhex('00002009'))
 # Eth2 testnet (spec v1.0.1)
 PraterSetting = BaseChainSetting(ETH2_NETWORK_NAME=PRATER, GENESIS_FORK_VERSION=bytes.fromhex('00001020'))
-# LUKSO l15-testnet
+# LUKSO l15 lukso-private-testnet
 LuksoSetting = BaseChainSetting(ETH2_NETWORK_NAME=LUKSO, GENESIS_FORK_VERSION=bytes.fromhex('83a55317'))
 
 
