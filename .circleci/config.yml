@@ -127,9 +127,11 @@ jobs:
           name: Prepare the file
           command: |
             export BUILD_FILE_NAME=lukso-deposit-cli-linux-amd64;
+            export BUILD_FILE_PATH=${BUILD_FILE_NAME}/deposit;
+            export ARTIFACT_BUILD_FILE_PATH=/tmp/artifacts/${BUILD_FILE_NAME};
             mkdir /tmp/artifacts;
-            cp ${BUILD_FILE_NAME} /tmp/artifacts;
-            sha256sum ${BUILD_FILE_NAME} | head -c 64 > /tmp/artifacts/${BUILD_FILE_NAME}.sha256
+            cp ${BUILD_FILE_PATH} ${ARTIFACT_BUILD_FILE_PATH};
+            sha256sum ${ARTIFACT_BUILD_FILE_PATH} | head -c 64 > ${ARTIFACT_BUILD_FILE_PATH}.sha256
       - store_artifacts:
           path: /tmp/artifacts
   build-windows:
@@ -184,9 +186,11 @@ jobs:
           name: Prepare the file
           command: |
             export BUILD_FILE_NAME=lukso-deposit-cli-darwin-amd64;
+            export BUILD_FILE_PATH=${BUILD_FILE_NAME}/deposit;
+            export ARTIFACT_BUILD_FILE_PATH=/tmp/artifacts/${BUILD_FILE_NAME};
             mkdir /tmp/artifacts;
-            cp ${BUILD_FILE_NAME} /tmp/artifacts;
-            shasum -a 256 ${BUILD_FILE_NAME} | head -c 64 > /tmp/artifacts/${BUILD_FILE_NAME}.sha256
+            cp ${BUILD_FILE_PATH} ${ARTIFACT_BUILD_FILE_PATH};
+            shasum -a 256 ${ARTIFACT_BUILD_FILE_PATH} | head -c 64 > ${ARTIFACT_BUILD_FILE_PATH}.sha256
       - store_artifacts:
           path: /tmp/artifacts
 
