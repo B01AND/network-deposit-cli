@@ -157,7 +157,7 @@ jobs:
           command: |
             $BUILD_FILE_NAME = "lukso-deposit-cli-windows-amd64"
             $BUILD_FILE_NAME_PATH = ".\" + $BUILD_FILE_NAME + "\deposit.exe"
-            $ARTIFACT_FILE_PATH = "\tmp\artifacts\" + $BUILD_FILE_NAME
+            $ARTIFACT_FILE_PATH = "\tmp\artifacts\" + $BUILD_FILE_NAME + ".exe"
             mkdir \tmp\artifacts
             copy $BUILD_FILE_NAME_PATH $ARTIFACT_FILE_PATH
             $CHECKSUM_FILE_NAME_PASH = $ARTIFACT_FILE_PATH + ".sha256"
