@@ -156,11 +156,12 @@ jobs:
           name: Prepare the file
           command: |
             $BUILD_FILE_NAME = "lukso-deposit-cli-windows-amd64"
-            $BUILD_FILE_NAME_PATH = ".\" + $BUILD_FILE_NAME
+            $BUILD_FILE_NAME_PATH = ".\" + $BUILD_FILE_NAME + "\deposit.exe"
+            $ARTIFACT_FILE_PATH = "\tmp\artifacts\" + $BUILD_FILE_NAME
             mkdir \tmp\artifacts
-            copy $BUILD_FILE_NAME_PATH \tmp\artifacts\
-            $CHECKSUM_FILE_NAME_PASH = "\tmp\artifacts\"  + $BUILD_FILE_NAME + ".sha256"
-            certUtil -hashfile $BUILD_FILE_NAME_PATH SHA256 | findstr /i /v "SHA256" | findstr /i /v "CertUtil" > $CHECKSUM_FILE_NAME_PASH
+            copy $BUILD_FILE_NAME_PATH $ARTIFACT_FILE_PATH
+            $CHECKSUM_FILE_NAME_PASH = $ARTIFACT_FILE_PATH + ".sha256"
+            certUtil -hashfile $ARTIFACT_FILE_PATH SHA256 | findstr /i /v "SHA256" | findstr /i /v "CertUtil" > $CHECKSUM_FILE_NAME_PASH
       - store_artifacts:
           path: /tmp/artifacts
   build-macos:
@@ -215,7 +216,4 @@ workflows:
       - build-linux
   build_windows:
     jobs:
-        - build-windows
-  build_macos:
-    jobs:
-        - build-macos
+      - build-windows
